@@ -18,4 +18,4 @@ https://drive.google.com/open?id=0BzG5zLRRrgKwfkthYmJhdW94aUE1QVpDeTN4bnhsVDJuNm
 - Third pass to append MarketCap percentage info accordingly
 - Output: ClosePrice_360days_complete.txt
 
->`cat ClosePrice_360days.txt|python ../../Stock_Analysis_Engine/category_correlation/src/preprocess_marketCap.py>ClosePrice_360days_complete.txt`
+>`cat ClosePrice_360days.txt|python ./src/preprocess_marketCap.py>ClosePrice_360days_complete.txt`
