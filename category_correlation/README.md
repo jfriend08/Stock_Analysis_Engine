@@ -19,3 +19,7 @@ https://drive.google.com/open?id=0BzG5zLRRrgKwfkthYmJhdW94aUE1QVpDeTN4bnhsVDJuNm
 - Output: ClosePrice_360days_complete.txt
 
 >`cat ClosePrice_360days.txt|python ./src/preprocess_marketCap.py>ClosePrice_360days_complete.txt`
+
+##Checks have been done
+- Checked the industry of "Wholesale Distributors", and the percentage is correct
+- Checked the stock "ZBK". Its marketCap is n/a, so the percentage is 0
