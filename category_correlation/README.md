@@ -23,3 +23,10 @@ https://drive.google.com/open?id=0BzG5zLRRrgKwfkthYmJhdW94aUE1QVpDeTN4bnhsVDJuNm
 ##Checks have been done
 - Checked the industry of "Wholesale Distributors", and the percentage is correct
 - Checked the stock "ZBK". Its marketCap is n/a, so the percentage is 0
+
+
+##ToDos
+- Double check readme
+- Double check source code
+- Double check correctness of processed data
+- Start coding!
