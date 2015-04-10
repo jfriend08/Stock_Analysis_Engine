@@ -4,7 +4,8 @@ This is the directory for category correlation
 #Working data source
 https://drive.google.com/open?id=0BzG5zLRRrgKwMmNHX0EybWdZanM&authuser=0
 
-##Steps:
+#Steps:
+##Combine raw data
 - merge stock close price for the past 360 days
 - append market cap and industury category
 - output:ClosePrice_360days.txt
