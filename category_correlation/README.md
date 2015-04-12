@@ -49,19 +49,19 @@ This is the directory for category correlation
 - Input: Two files, first is ./constant/correlation_output_Step1.txt; second is ./constant/PriceDiff_360days.txt
 - One mapper output:
 
-`[Stock1, [Prices]] (from PriceDiff.txt)
-[Stock1, [Industry1, [Industry1_Prices] ]] (from correlation_output_Step1.txt)
-[Stock1, [Industry2, [Industry2_Prices] ]] (from correlation_output_Step1.txt)
-[Stock1, [Industry3, [Industry3_Prices] ]] (from correlation_output_Step1.txt)
+>`Stock1 --> [Prices]
+Stock1 --> [Industry1 --> [Industry1_Prices] ]
+Stock1 --> [Industry2 --> [Industry2_Prices] ]
+Stock1 --> [Industry3 --> [Industry3_Prices] ]
 ...
-[Stock1, [IndustryM --> [IndustryM_Prices] ]] (from correlation_output_Step1.txt)
+Stock1 --> [IndustryM --> [IndustryM_Prices] ]
 
-[Stock2, [Prices]] (from PriceDiff.txt)
-[Stock2, [Industry1, [Industry1_Prices] ]] (from correlation_output_Step1.txt)
-[Stock2, [Industry2, [Industry2_Prices] ]] (from correlation_output_Step1.txt)
-[Stock2, [Industry3, [Industry3_Prices] ]] (from correlation_output_Step1.txt)
+Stock2 --> [Prices] (from PriceDiff.txt)
+Stock2 --> [Industry1 --> [Industry1_Prices] ]
+Stock2 --> [Industry2 --> [Industry2_Prices] ]
+Stock2 --> [Industry3 --> [Industry3_Prices] ]
 ...
-[Stock2, [IndustryM, [IndustryM_Prices] ]] (from correlation_output_Step1.txt)
+Stock2 --> [IndustryM --> [IndustryM_Prices] ]
 `
 
 
