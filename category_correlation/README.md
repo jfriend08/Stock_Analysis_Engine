@@ -24,6 +24,19 @@ https://drive.google.com/open?id=0BzG5zLRRrgKwfkthYmJhdW94aUE1QVpDeTN4bnhsVDJuNm
 - Checked the industry of "Wholesale Distributors", and the percentage is correct
 - Checked the stock "ZBK". Its marketCap is n/a, so the percentage is 0
 
+#Analytic Works:
+##Step 1: Get the index-weighted price-differences for each of industry
+- Data Source: ./constant/PriceDiff_360days.txt. Definition of PriceDiff: Price_Day1_Close - Price_Day2_Close
+- Mapper output: 
+>`[IndustryA, Day1_PriceDiff1*weight_Company1], ..., [IndustryA, Day365_PriceDiff365*weight_Company1], 
+[IndustryA, Day1_PriceDiff1*weight_Company2], ..., [IndustryA, Day365_PriceDiff365*weight_Company2], 
+[IndustryB, Day1_PriceDiff1*weight_Company7], ..., [IndustryB, Day365_PriceDiff365*weight_Company7],
+[IndustryB, Day1_PriceDiff1*weight_Company8], ..., [IndustryB, Day365_PriceDiff365*weight_Company8],`
+- Hadoop will partition the Industry(key) to reducer
+- Reducer output: 
+
+
+
 
 ##ToDos
 - Double check readme
