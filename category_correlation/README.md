@@ -34,13 +34,18 @@ This is the directory for category correlation
 [IndustryB, Day1_PriceDiff1*weight_Company7], ..., [IndustryB, Day365_PriceDiff365*weight_Company7],
 [IndustryB, Day1_PriceDiff1*weight_Company8], ..., [IndustryB, Day365_PriceDiff365*weight_Company8],`
 
-- Hadoop will partition the Industry(key) to reducer
+- Hadoop will partition the Industry(key) and sort it to reducer. Will looks like:
 - Reducer output: 
 
 >`[IndustryA, (Day1_WeightedPriceDiff1, Day2_WeightedPriceDiff2, ..., Day365_WeightedPriceDiff365, )],
 [IndustryB, (Day1_WeightedPriceDiff1, Day2_WeightedPriceDiff2, ..., Day365_WeightedPriceDiff365, )],
 [IndustryZ, (Day1_WeightedPriceDiff1, Day2_WeightedPriceDiff2, ..., Day365_WeightedPriceDiff365, )],`
 
+- Usage:
+>```python
+s = "Python syntax highlighting"
+print s
+```
 
 
 ##ToDos
