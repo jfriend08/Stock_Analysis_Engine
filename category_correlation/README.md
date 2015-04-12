@@ -27,7 +27,7 @@ This is the directory for category correlation
 #Analytic Works:
 ##Step 1: Get the index-weighted price-differences for each of industry
 - Data Source: ./constant/PriceDiff_360days.txt. Definition of PriceDiff: Price_Day1_Close - Price_Day2_Close
-- Mapper output
+- Mapper output:
 
 >`[IndustryA, Day1_PriceDiff1*weight_Company1], ..., [IndustryA, Day365_PriceDiff365*weight_Company1],
 [IndustryA, Day1_PriceDiff1*weight_Company2], ..., [IndustryA, Day365_PriceDiff365*weight_Company2],
@@ -37,6 +37,9 @@ This is the directory for category correlation
 - Hadoop will partition the Industry(key) to reducer
 - Reducer output: 
 
+>`[IndustryA, (Day1_WeightedPriceDiff1, Day2_WeightedPriceDiff2, ..., Day365_WeightedPriceDiff365, )],
+[IndustryB, (Day1_WeightedPriceDiff1, Day2_WeightedPriceDiff2, ..., Day365_WeightedPriceDiff365, )],
+[IndustryZ, (Day1_WeightedPriceDiff1, Day2_WeightedPriceDiff2, ..., Day365_WeightedPriceDiff365, )],`
 
 
 
