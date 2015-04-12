@@ -19,7 +19,9 @@ rownames(ClosePrices)<-ClosePrices[,0]
 ################### Different method ###################
 filenames <- list.files(path="./historicalData2", pattern="*_price.txt", full.names=TRUE)
 companyList <- read.csv('./companylist02.csv', sep=",", header=T)
-rownames(companyList)<-companyList$Symbol
+
+rownames(companyList)<-gsub(" ", "", companyList$Symbol)
+  
 
 
 array<-0
@@ -36,7 +38,7 @@ for (i in 1:length(filenames)){
     start=nrow(tmp)-Days
     name<-gsub("_price.txt", "", basename(filenames[i]))
     namelist <- append(namelist, name)
-    array<- cbind(array,tmp[start:end,"Close"])  
+    array<- cbind(array,tmp[start:end,"Volume"])  
   }  
 }
 array <- subset(array, select = -c(array))
@@ -45,7 +47,7 @@ rownames(array) <- rownames(tmp)[start:end]
 
 tarray<-t(array)
 
-write.table(array, file="ClosePrice_180daysII.txt",sep="\t", row.names = TRUE, col.names = TRUE)
+#write.table(array, file="ClosePrice_180daysII.txt",sep="\t", row.names = TRUE, col.names = TRUE)
 
 test <- cbind(companyList[rownames(tarray),c("MarketCap", "industry")], tarray)
-write.table(test, file="ClosePrice_360days.txt",sep="\t", row.names = TRUE, col.names = TRUE)
+write.table(test, file="Volume_360days.txt",sep="\t", row.names = TRUE, col.names = TRUE)
