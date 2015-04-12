@@ -61,8 +61,7 @@ Stock2 --> [Industry1 --> [Industry1_Prices] ]
 Stock2 --> [Industry2 --> [Industry2_Prices] ]
 Stock2 --> [Industry3 --> [Industry3_Prices] ]
 ...
-Stock2 --> [IndustryM --> [IndustryM_Prices] ]
-`
+Stock2 --> [IndustryM --> [IndustryM_Prices] ]`
 
 
 
