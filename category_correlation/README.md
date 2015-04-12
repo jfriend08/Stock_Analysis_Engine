@@ -42,10 +42,10 @@ This is the directory for category correlation
 [IndustryZ, (Day1_WeightedPriceDiff1, Day2_WeightedPriceDiff2, ..., Day365_WeightedPriceDiff365, )],`
 
 - Usage:
->```python
-s = "Python syntax highlighting"
-print s
-```
+
+>`python ./src/relation_step1_mapper.py <./constant/PriceDiff_360days.txt|sort|python ./src/categoryCorrelation_step1_reducer.py > ./output/correlation_output_Step1.txt`
+
+
 
 
 ##ToDos
