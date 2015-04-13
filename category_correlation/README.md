@@ -48,7 +48,7 @@ This is the directory for category correlation
 ##Step 2: Batch MapReduce correlation-count for each stock to ALL industries
 - Input: Two files, first is ./constant/correlation_output_Step1.txt; second is ./constant/PriceDiff_360days.txt
 - Preprocess: add tag for correlation_output_Step1.txt
-
+>` python src/preprocess_addTAG.py < output/correlation_output_Step1.txt > output/correlation_output_Step1_TAG.txt`
 
 - One mapper output:
 >[Stock1, [Prices]]  [Stock1 --> [#TAG_Industry1 --> [Industry1_Prices] ]],  
