@@ -50,7 +50,6 @@ This is the directory for category correlation
 - Preprocess: add
 
 - One mapper output:
->
 >[Stock1, [Prices]]  [Stock1 --> [#TAG_Industry1 --> [Industry1_Prices] ]],  
 >[Stock1 --> [#TAG_#Industry2 --> [Industry2_Prices] ]],
 >[Stock1 --> [#TAG_Industry3 --> [Industry3_Prices] ]],
