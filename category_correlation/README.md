@@ -62,8 +62,14 @@ This is the directory for category correlation
 >[Stock2 --> [#TAG_Industry3 --> [Industry3_Prices] ]],
 >[Stock2 --> [#TAG_IndustryM --> [IndustryM_Prices] ]],
 
-Please see ./ouput/mapper_tmp_1000lines.txt to have idea about data structure
+Please see ./ouput/mapper_tmp_1000lines.txt to have idea about data structure.
 So this way, although a bit expensive, we can garuntee each stock can compare to ALL category
+
+- Mapper output:
+>A	{'Miscellaneous': 195, 'Computer Manufacturing': 227,..., 'Textiles': 221}
+>AAOI	{'Miscellaneous': 179, 'Computer Manufacturing': 198,..., 'Textiles': 203}
+
+Please see ./ouput/reducer_tmp_1000lines.txt to have idea about data structure.
 
 
 ##ToDos
