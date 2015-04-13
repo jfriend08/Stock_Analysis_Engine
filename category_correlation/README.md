@@ -50,7 +50,7 @@ This is the directory for category correlation
 - Preprocess: add tag for correlation_output_Step1.txt
 >` python src/preprocess_addTAG.py < output/correlation_output_Step1.txt > output/correlation_output_Step1_TAG.txt`
 
-- One mapper output:
+- Mapper output:
 >[Stock1, [Prices]]  [Stock1 --> [#TAG_Industry1 --> [Industry1_Prices] ]],  
 >[Stock1 --> [#TAG_#Industry2 --> [Industry2_Prices] ]],
 >[Stock1 --> [#TAG_Industry3 --> [Industry3_Prices] ]],
@@ -61,7 +61,8 @@ This is the directory for category correlation
 >[Stock2 --> [#TAG_Industry2 --> [Industry2_Prices] ]],
 >[Stock2 --> [#TAG_Industry3 --> [Industry3_Prices] ]],
 >[Stock2 --> [#TAG_IndustryM --> [IndustryM_Prices] ]],
-
+Please see ./ouput/mapper_tmp_1000lines.txt to have idea about data structure
+So this way, although a bit expensive, we can garuntee each stock can compare to ALL category
 
 
 ##ToDos
