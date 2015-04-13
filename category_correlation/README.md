@@ -66,7 +66,6 @@ Please see ./ouput/mapper_tmp_1000lines.txt to have idea about data structure.
 So this way, although a bit expensive, we can garuntee each stock can compare to ALL category
 
 - Reducer output:
-
 >A	{'Miscellaneous': 195, 'Computer Manufacturing': 227,..., 'Textiles': 221}
 >
 >AAOI	{'Miscellaneous': 179, 'Computer Manufacturing': 198,..., 'Textiles': 203}
