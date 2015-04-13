@@ -61,6 +61,7 @@ This is the directory for category correlation
 >[Stock2 --> [#TAG_Industry2 --> [Industry2_Prices] ]],
 >[Stock2 --> [#TAG_Industry3 --> [Industry3_Prices] ]],
 >[Stock2 --> [#TAG_IndustryM --> [IndustryM_Prices] ]],
+
 Please see ./ouput/mapper_tmp_1000lines.txt to have idea about data structure
 So this way, although a bit expensive, we can garuntee each stock can compare to ALL category
 
