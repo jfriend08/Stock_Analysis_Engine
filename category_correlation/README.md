@@ -60,7 +60,7 @@ Stock2 --> [Prices],
 Stock2 --> [#TAG_Industry1 --> [Industry1_Prices] ],
 Stock2 --> [#TAG_Industry2 --> [Industry2_Prices] ],
 Stock2 --> [#TAG_Industry3 --> [Industry3_Prices] ],
-Stock2 --> [#TAG_IndustryM --> [IndustryM_Prices] ],`
+Stock2 --> [#TAG_IndustryM --> [IndustryM_Prices] ],
 
 
 
