@@ -15,23 +15,28 @@ def counting(stock_prices, industry_dict):
 		
 cur_Stock = None
 for line in sys.stdin:    
+    
     line = line.strip() # remove leading and trailing whitespace
-    fields = line.split("\t")
-    stock = fields.pop(0)	        
-    if cur_Stock == stock:	    	    	
-    	M = re.match(r"[A-Za-z]", fields[0])    	
-    	if M: #info from category    		    		
-    		industry = fields.pop(0)
-    		industry_dict[industry] = fields    	
-			
-    else:	
-		if cur_Stock:        	
-			# now is the next stock, do something (e.g. print result for previous stock)			
-			industryCount_dict = counting(stock_prices, industry_dict)
-			print cur_Stock + "\t" + str(industryCount_dict)
-			# for industry in industryCount_dict.keys():
-			# 	print "industry: " + industry + " count: " + str(industryCount_dict[industry])
+    try:
+    	fields = line.split("\t")
+    	stock = fields.pop(0)	        
+    	if cur_Stock == stock:	    	    	    	
+    		M = re.match(r"[A-Za-z]", fields[0])
+    		if M: #info from category    		    		
+    			industry = fields.pop(0)
+    			industry_dict[industry] = fields    			
+    	else:	
+			if cur_Stock:        	
+				# now is the next stock, do something (e.g. print result for previous stock)			
+				industryCount_dict = counting(stock_prices, industry_dict)
+				print cur_Stock + "\t" + str(industryCount_dict)
+				# for industry in industryCount_dict.keys():
+				# 	print "industry: " + industry + " count: " + str(industryCount_dict[industry])
 
-		cur_Stock = stock
-		stock_prices = fields #assign the new stock price
-		industry_dict = {} # init new dictory to save all industry prices
+			cur_Stock = stock
+			stock_prices = fields #assign the new stock price
+			industry_dict = {} # init new dictory to save all industry prices
+
+    except:
+		pass
+	    

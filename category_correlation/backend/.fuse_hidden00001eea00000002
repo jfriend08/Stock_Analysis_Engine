@@ -1,0 +1,103 @@
+import tornado.httpserver
+import tornado.ioloop
+import tornado.web
+import hashlib
+import socket
+import getpass
+import os
+import json
+import pickle
+import urllib
+from nltk.tokenize import RegexpTokenizer
+
+from tornado.httpclient import AsyncHTTPClient
+from tornado import gen
+from tornado.options import define, options
+
+
+invertedIndex = None
+tokenizer = None
+
+class Application(tornado.web.Application):
+    def __init__(self, server):
+        if(server == 'indexServer'):            
+            handlers = [
+                (r"/", HomeHandler),            
+                (r"/index", idxSearchHandler)
+            ]        
+        elif (server == 'docServer'):            
+            handlers = [
+                (r"/", HomeHandler),            
+                (r"/doc", docSearchHandler)
+            ]
+        else:
+            raise NameError('wrong server name')
+        
+        tornado.web.Application.__init__(self, handlers)
+
+class idxSearchHandler(tornado.web.RequestHandler):
+    @gen.coroutine            
+    def get(self):
+        global invertedIndex, tokenizer
+        myquery = self.request.uri
+        myquery = urllib.unquote(myquery.split('?q=')[-1])
+        tokens = [t.lower() for t in tokenizer.tokenize(myquery)]
+        
+        alllistfromToken=[]
+        for token in tokens:
+            try:
+                alllistfromToken.append(invertedIndex[token])
+            except KeyError:
+                continue
+        self.write(str(alllistfromToken))
+
+class docSearchHandler(tornado.web.RequestHandler):
+    @gen.coroutine            
+    def get(self):
+        global invertedIndex, tokenizer
+        myquery = urllib.unquote(self.request.uri)
+        (docid, query) = myquery.replace('/doc?id=','\t').replace('&q=','\t').split()        
+        print invertedIndex[docid]
+        
+        
+
+
+        
+
+
+count=0
+class HomeHandler(tornado.web.RequestHandler):
+    @gen.coroutine     
+    def get(self):      
+        global count
+        self.write("Reflesh Count:" + str(count))
+        count=count+1
+
+
+class BackEndApp(object):
+    def __init__(self, serverType, serverNum, port):
+        global invertedIndex, tokenizer
+        if (serverType=='indexServer'):
+            path = os.path.dirname(__file__) + '/../pickle/indexServer' + str(serverNum)
+        elif (serverType=='docServer'):
+            path = os.path.dirname(__file__) + '/../pickle/docServer' + str(serverNum)
+        else:
+            raise NameError('path error')
+        
+        # load pickle the proper pickle file
+        print str(serverType) + ":" + str(port) + " loading: " + str(path)
+        invertedIndex = pickle.load(open(path, 'r'))                
+        tokenizer = RegexpTokenizer(r'\w+')
+
+        # self.app = Application(serverType)
+        self.app = tornado.httpserver.HTTPServer(Application(serverType) )        
+
+        # http_server = tornado.httpserver.HTTPServer(Application(serverType) )
+        # print "listen to:" + str(port)                
+        # http_server.listen(port)
+        # tornado.ioloop.IOLoop.instance().start()
+
+
+
+
+        

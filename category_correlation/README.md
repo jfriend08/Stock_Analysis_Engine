@@ -7,6 +7,13 @@ This is the directory for category correlation
 #User Interface
 ![alt tag](./constant/fig.png)
 
+#Usage:
+>`cat ./constant/PriceDiff_360days.txt ./output/correlation_output_Step1_TAG.txt |python ./src/categoryCorrelation_step2_mapper.py |sort|python ./src/categoryCorrelation_step2_reducer.py > ./output/correlation_output_Final.txt`
+
+Start HTTP interface
+>`python start.py`
+
+
 #Steps:
 ##Combine raw data
 - Merge stock close price for the past 360 days
