@@ -5,48 +5,44 @@ from operator import itemgetter, attrgetter
 MRJob.SORT_VALUES = True
 
 class MRWordFrequencyCount(MRJob):
-
+	
     def mapper(self, _, line):
-        fields = line.strip().split('\t')   
+        fields = line.strip().split('\t')
         stock = fields[0]
-        info = fields[1]
-        info = info[1: len(info) - 1]
-
-        industry = info.split(',')
-
-        for x in industry:
-            detail = x.split(':')
-            industry_name = detail[0][2:len(detail[0]) - 1]
-            count = detail[1]
-
-            print stock + " " + count + " " + industry_name
-            #yield stock, ()
-
-        #print industry[len(industry) - 1]
-
-        yield stock, 1
-
-        #yield words[0], (int(words[1]), "industry_name")
-
+		
+        info = eval(fields[1])
+		
+        for x in info:
+            #industry_name = x[1]
+            industry_name = x
+			
+            #print stock, (int(info[x]), industry_name)
+			
+            #print stock, int(info[x]), industry_name
+            yield stock, (int(info[x]), industry_name)
+	
+	#yield words[0], (int(words[1]), "industry_name")
+	
     def reducer(self, key, values):
-
-        yield key, sum(values)
-
-        '''
+		
+        values = sorted(values, key=lambda x: x[0], reverse = True)
+        count = 0
+		
+        output = []
+        output.append(key)
+		
+        #info = {}
+        info = []
+		
         for d in values:
-            line_data='\t'.join(str(n) for n in d)
-            print key + " " + str(line_data)
-        '''
-        '''
-    	values = sorted(values, key=lambda x: x[1])
-    	count = 0
-
-    	for d in values:
-    		if count < 2:
-    			line_data='\t'.join(str(n) for n in d)
-        		print key + " " + str(line_data)
-        		count += 1
-        '''
+            if count < 10:
+                count += 1
+                item = str(d[0]) + " " + str(d[1])
+                info.append(item)
+		
+        output.append(info)
+		
+        yield output
 
 if __name__ == '__main__':
     MRWordFrequencyCount.run()

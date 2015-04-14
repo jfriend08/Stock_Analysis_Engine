@@ -13,7 +13,6 @@ def counting(stock_prices, industry_dict):
 				industryCount_dict[industry] += 1
 	return industryCount_dict
 		
-		
 cur_Stock = None
 for line in sys.stdin:    
     line = line.strip() # remove leading and trailing whitespace
