@@ -1,5 +1,6 @@
 from mrjob.job import MRJob
 from itertools import groupby
+#from operator import itemgetter, attrgetter
 import operator
 
 MRJob.SORT_VALUES = True
@@ -32,9 +33,11 @@ class MRWordFrequencyCount(MRJob):
         for d in values:
             if count < 10:
                 count += 1
-                my_dict[int(d[0])] = d[1]
+                my_dict[d[1]] = int(d[0])
 		
-        my_dict = sorted(my_dict.items(), key=operator.itemgetter(0), reverse=True)
+        my_dict = sorted(my_dict.items(), key=operator.itemgetter(1), reverse=True)
+		
+        #print my_dict
 		
         yield key, my_dict
 
