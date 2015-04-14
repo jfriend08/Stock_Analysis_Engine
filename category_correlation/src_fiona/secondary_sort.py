@@ -1,6 +1,6 @@
 from mrjob.job import MRJob
 from itertools import groupby
-from operator import itemgetter, attrgetter
+import operator
 
 MRJob.SORT_VALUES = True
 
@@ -17,32 +17,26 @@ class MRWordFrequencyCount(MRJob):
             industry_name = x
 			
             #print stock, (int(info[x]), industry_name)
-			
-            #print stock, int(info[x]), industry_name
             yield stock, (int(info[x]), industry_name)
 	
 	#yield words[0], (int(words[1]), "industry_name")
 	
     def reducer(self, key, values):
-		
+        #values.sort(key=lambda x: x[1], reverse=True)
         values = sorted(values, key=lambda x: x[0], reverse = True)
         count = 0
 		
-        output = []
-        output.append(key)
-		
-        #info = {}
-        info = []
+        my_dict = {}
+        sorted_dict = {}
 		
         for d in values:
             if count < 10:
                 count += 1
-                item = str(d[0]) + " " + str(d[1])
-                info.append(item)
+                my_dict[int(d[0])] = d[1]
 		
-        output.append(info)
+        my_dict = sorted(my_dict.items(), key=operator.itemgetter(0), reverse=True)
 		
-        yield output
+        yield key, my_dict
 
 if __name__ == '__main__':
     MRWordFrequencyCount.run()
